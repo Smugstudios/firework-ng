@@ -1,0 +1,53 @@
+<div class="header">
+    <ul class="nav nav-pills pull-right">
+        <li class="active"><a ng-href="#">Home</a></li>
+        <li><a ng-href="#">Login</a></li>
+        <li><a ng-href="#">About</a></li>
+        <li><a ng-href="#">Contact</a></li>
+    </ul>
+    <h3 class="text-muted">firework</h3>
+</div>
+
+<div class="jumbotron">
+    <h1>firework</h1>
+
+    <p class="lead">
+        <b>record</b> what you do, <b>see</b> what you've done
+    </p>
+</div>
+
+<div class="row marketing">
+    <h4>record</h4>
+
+    <p>
+        record what you do
+    </p>
+
+    <ul class="unstyled">
+        <li ng-repeat="event in fireworkEvents">
+            {{ event.message }}
+        </li>
+    </ul>
+</div>
+
+<div class="footer">
+    <div class="row">
+        <div class="col-md-4">
+            <ul class="list-unstyled">
+                <li><a href="/privacy">Privacy Statement</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <ul class="list-unstyled">
+                <li><a href="https://github.com/JeremyNevill/shortee">Shortee Message Syntax</a></li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <ul class="list-unstyled">
+                <li>Copyright (c) 2012-2014</li>
+                <li>Lateral Information Systems Ltd</li>
+            </ul>
+        </div>
+    </div>
+</div>
