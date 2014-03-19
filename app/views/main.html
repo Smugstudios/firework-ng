@@ -2,52 +2,66 @@
     <ul class="nav nav-pills pull-right">
         <li class="active"><a ng-href="#">Home</a></li>
         <li><a ng-href="#">Login</a></li>
-        <li><a ng-href="#">About</a></li>
         <li><a ng-href="#">Contact</a></li>
     </ul>
     <h3 class="text-muted">firework</h3>
 </div>
 
-<div class="jumbotron">
-    <h1>firework</h1>
 
-    <p class="lead">
-        <b>record</b> what you do, <b>see</b> what you've done
-    </p>
-</div>
-
-<div class="row marketing">
-    <h4>record</h4>
-
-    <p>
-        record what you do
-    </p>
-
-    <ul class="unstyled">
-        <li ng-repeat="event in fireworkEvents">
-            {{ event.message }}
-        </li>
-    </ul>
-</div>
-
-<div class="footer">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-md-4">
-            <ul class="list-unstyled">
-                <li><a href="/privacy">Privacy Statement</a></li>
-                <li><a href="/about">About</a></li>
+
+        <div class="col-sm-3 sidebar">
+            <ul class="nav nav-sidebar">
+                <li class="active"><a href="#">Timeline</a></li>
+                <li><a href="#">Add</a></li>
+                <li><a href="#">Search</a></li>
+                <li><a href="#">Who</a></li>
+                <li><a href="#">What</a></li>
             </ul>
         </div>
-        <div class="col-md-4">
-            <ul class="list-unstyled">
-                <li><a href="https://github.com/JeremyNevill/shortee">Shortee Message Syntax</a></li>
-            </ul>
+        <div class="col-sm-9 main">
+
+            <h1>Timeline</h1>
+
+            <p ng-repeat="event in fireworkEvents">
+                <button class="btn btn-sm btn-primary"> @{{ event.actor }}</button>
+                <button class="btn btn-sm btn-success"> {{ event.action }}</button>
+                <button class="btn btn-sm btn-info"> {{ event.amount }}</button>
+                <button class="btn btn-sm btn-warning"> {{ event.units }}</button>
+                <button class="btn btn-sm btn-danger">{{ event.date }}</button>
+            </p>
         </div>
-        <div class="col-md-4">
-            <ul class="list-unstyled">
-                <li>Copyright (c) 2012-2014</li>
-                <li>Lateral Information Systems Ltd</li>
-            </ul>
+    </div>
+
+
+    <div class="jumbotron">
+        <h1>firework</h1>
+
+        <p class="lead">
+            <b>log</b> what you do, <b>see</b> what you've done
+        </p>
+    </div>
+
+    <div class="footer">
+        <div class="row">
+            <div class="col-md-4">
+                <ul class="list-unstyled">
+                    <li><a href="/privacy">Privacy Statement</a></li>
+                    <li><a href="/about">About</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <ul class="list-unstyled">
+                    <li><a href="https://github.com/JeremyNevill/shortee">Shortee Message Syntax</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <ul class="list-unstyled">
+                    <li>Copyright (c) 2012-2014</li>
+                    <li>Lateral Information Systems Ltd</li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
