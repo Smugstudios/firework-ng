@@ -1,22 +1,19 @@
-# Ui Design
+# firework-ng Design
 
-Firework-ng is the AngularJS version web interface for the 
+Firework-ng is the AngularJS web interface for the 
 Firework Micrologging Framework.
 
 All backend services (authentication, data persistance) are provided 
-through APIs, making Firework-ng a 'bring your own backend' system to 
-allow hosting on multiple operating systems and cloud providers.  
-
-If access from everywhere is paramount host the backend online, if security 
-is most important host yourself behind the firewall.
+through APIs, making Firework-ng a 'bring your own backend' system to allow 
+hosting with Firework.com or on your own backend using Azure Mobile Services.
 
 
 ## Timeline
 
-* List of timeline events. 
+* Users can view a list of timeline items.
 * Default sort is descending date order.
-* User can sort by date, actor, action.
-* Total number of events shown.
+  * User can sort by date, actor, action.
+* The total number of items is shown.
 
 
 ## Login
@@ -51,30 +48,58 @@ is most important host yourself behind the firewall.
 
 ## Add
 
-* User can add an event
+* Users can add an item
   * via standard form
   * via a shortee message single form
+* New items trigger an email notification to the user
+
+
+## Edit
+
+* Users can edit an item
+  * via standard form
+  * via a shortee message single form
+* Updated items trigger an email notification to the user
+
+
+## delete
+
+* Users can delete an item
+* Prior to deletion a confirmation is requested from the user 
 
 
 ## Search
 
+* User can search for items
+   * By Who(actor)
+   * What (action)
+   * For a time period
+
 ## Who (Actor)
+
+* Users can view a list of who (actors) and select an actor to search by
 
 ## What (Action)
 
+* Users can view a list of what (actions) and select an actor to search by
+
 ## When (By Date)
 
-## Dashboard
-
-## Public Profile
-
-## Follow
-
-## Subscribe
-
-## Tag
+* Users can view a number of date periods to show items for
+  * Most recent
+  * Last Week
+  * Last Month
 
 ## Export
 
-## Simple Add
+* Users can download their entire item collection as a csv file
+
+## Future Features
+
+* Dashboard
+* Public Profile
+* Follow
+* Subscribe
+* Tag
+* Push Notifications
 
