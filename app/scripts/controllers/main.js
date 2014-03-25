@@ -1,25 +1,25 @@
 'use strict';
 
 angular.module('fireworkNgApp')
-    .controller('MainCtrl', function ($scope, Event) {
+    .controller('MainCtrl', function ($scope, Item) {
 
-        $scope.newEvent = new Event();
-        $scope.fireworkEvents = Event.query();
+        $scope.newItem = new Item();
+        $scope.fireworkItems = Item.query();
 
         $scope.create = function () {
-            $scope.newEvent.$save(function () {
-                $scope.fireworkEvents = Event.query();
-                $scope.newEvent = new Event();
+            $scope.newItem.$save(function () {
+                $scope.fireworkItems = Item.query();
+                $scope.newItem = new Item();
             });
         }
 
-        $scope.delete = function (event) {
-            event.$delete(function () {
-                $scope.fireworkEvents = Event.query();
+        $scope.delete = function (item) {
+            item.$delete(function () {
+                $scope.fireworkItems = Item.query();
             });
         };
 
-        $scope.update = function (event) {
-            event.$update();
+        $scope.update = function (item) {
+            item.$update();
         }
     });

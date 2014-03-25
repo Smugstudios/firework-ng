@@ -21,14 +21,14 @@
             <div id="timeline">
                 <h1>Timeline</h1>
 
-                <p ng-repeat="event in fireworkEvents">
-                    <button class="btn btn-sm btn-primary"> @{{ event.actor }}</button>
-                    <button class="btn btn-sm btn-success"> {{ event.action }}</button>
-                    <button class="btn btn-sm btn-info"> {{ event.amount }}</button>
-                    <button class="btn btn-sm btn-warning"> {{ event.units }}</button>
-                    <button class="btn btn-sm btn-danger">{{ event.date }}</button>
+                <p ng-repeat="item in fireworkItems">
+                    <button class="btn btn-sm btn-primary"> @{{ item.actor }}</button>
+                    <button class="btn btn-sm btn-success"> {{ item.action }}</button>
+                    <button class="btn btn-sm btn-info"> {{ item.amount }}</button>
+                    <button class="btn btn-sm btn-warning"> {{ item.units }}</button>
+                    <button class="btn btn-sm btn-danger">{{ item.date }}</button>
                     <button class="btn btn-xs btn-default">edit</button>
-                    <button class="btn btn-xs btn-danger" ng-click="delete(event)">del</button>
+                    <button class="btn btn-xs btn-danger" ng-click="delete(item)">del</button>
                 </p>
             </div>
             <hr/>
@@ -37,25 +37,25 @@
 
                 <form ng-submit="create()" role="form">
                     <div class="form-group">
-                        <input ng-model="newEvent.actor" type="text" class="form-control" id="actor" placeholder="Who">
+                        <input ng-model="newItem.actor" type="text" class="form-control" id="actor" placeholder="Who">
                     </div>
                     <div class="form-group">
-                        <input ng-model="newEvent.action" type="text" class="form-control" id="action"
+                        <input ng-model="newItem.action" type="text" class="form-control" id="action"
                                placeholder="What">
                     </div>
                     <div class="form-group">
-                        <input ng-model="newEvent.amount" type="text" class="form-control" id="amount"
+                        <input ng-model="newItem.amount" type="text" class="form-control" id="amount"
                                placeholder="Num">
                     </div>
                     <div class="form-group">
-                        <input ng-model="newEvent.units" type="text" class="form-control" id="units"
+                        <input ng-model="newItem.units" type="text" class="form-control" id="units"
                                placeholder="Units">
                     </div>
                     <div class="form-group">
-                        <input ng-model="newEvent.date" type="text" class="form-control" id="date" placeholder="Date">
+                        <input ng-model="newItem.date" type="text" class="form-control" id="date" placeholder="Date">
                     </div>
                     <div class="form-group">
-                        <input ng-model="newEvent.message" type="text" class="form-control" id="message"
+                        <input ng-model="newItem.message" type="text" class="form-control" id="message"
                                placeholder="Message">
                     </div>
                     <button type="submit" class="btn btn-default">Submit</button>
