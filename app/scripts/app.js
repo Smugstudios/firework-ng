@@ -1,16 +1,24 @@
 'use strict';
 
 angular.module('fireworkNgApp', [
-        'ngCookies',
-        'ngResource',
-        'ngSanitize',
-        'ngRoute',
-        'mobileServices'
-    ])
+    'ngCookies',
+    'ngResource',
+    'ngSanitize',
+    'ngRoute',
+    'mobileServices'
+])
     .config(function ($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'views/main.html',
+                templateUrl: 'views/home.html',
+                controller: 'MainCtrl'
+            })
+            .when('/timeline', {
+                templateUrl: 'views/timeline.html',
+                controller: 'MainCtrl'
+            })
+            .when('/add', {
+                templateUrl: 'views/add.html',
                 controller: 'MainCtrl'
             })
             .otherwise({
