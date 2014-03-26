@@ -11,15 +11,15 @@ angular.module('fireworkNgApp', [
         $routeProvider
             .when('/', {
                 templateUrl: 'views/home.html',
-                controller: 'MainCtrl'
+                controller: 'MainController'
             })
             .when('/timeline', {
                 templateUrl: 'views/timeline.html',
-                controller: 'MainCtrl'
+                controller: 'MainController'
             })
             .when('/add', {
                 templateUrl: 'views/add.html',
-                controller: 'MainCtrl'
+                controller: 'MainController'
             })
             .otherwise({
                 redirectTo: '/'

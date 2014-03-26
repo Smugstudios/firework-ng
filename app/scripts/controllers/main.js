@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fireworkNgApp')
-    .controller('MainCtrl', function ($scope, Item) {
+    .controller('MainController', function ($scope, Item) {
 
         $scope.newItem = new Item();
         $scope.fireworkItems = Item.query();
