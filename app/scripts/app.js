@@ -1,17 +1,25 @@
 'use strict';
 
 angular.module('fireworkNgApp', [
-        'ngCookies',
-        'ngResource',
-        'ngSanitize',
-        'ngRoute',
-        'mobileServices'
-    ])
+    'ngCookies',
+    'ngResource',
+    'ngSanitize',
+    'ngRoute',
+    'mobileServices'
+])
     .config(function ($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'views/main.html',
-                controller: 'MainCtrl'
+                templateUrl: 'views/home.html',
+                controller: 'MainController'
+            })
+            .when('/timeline', {
+                templateUrl: 'views/timeline.html',
+                controller: 'MainController'
+            })
+            .when('/add', {
+                templateUrl: 'views/add.html',
+                controller: 'MainController'
             })
             .otherwise({
                 redirectTo: '/'
@@ -22,6 +30,3 @@ angular.module('fireworkNgApp', [
         $httpProvider.defaults.headers.common['Content-Type'] = 'Application/json';
     }
 );
-
-
-
