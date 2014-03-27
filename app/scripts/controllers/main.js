@@ -11,7 +11,7 @@ angular.module('fireworkNgApp')
                 $scope.fireworkItems = Item.query();
                 $scope.newItem = new Item();
             });
-        }
+        };
 
         $scope.delete = function (item) {
             item.$delete(function () {
@@ -21,5 +21,6 @@ angular.module('fireworkNgApp')
 
         $scope.update = function (item) {
             item.$update();
-        }
+        };
+
     });

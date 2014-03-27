@@ -30,6 +30,3 @@ angular.module('fireworkNgApp', [
         $httpProvider.defaults.headers.common['Content-Type'] = 'Application/json';
     }
 );
-
-
-
