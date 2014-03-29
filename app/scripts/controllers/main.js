@@ -1,29 +1,38 @@
 'use strict';
 
 angular.module('fireworkNgApp')
-    .controller('MainController', function ($scope, Item) {
+    .controller('MainController', function ($scope, Azureservice) {
 
-        $scope.newItem = new Item();
-        $scope.fireworkItems = Item.query();
+        $scope.newItem = {};
+        $scope.fireworkItems = [];
+
+        Azureservice.query('items', {})
+            .then(function (items) {
+                $scope.fireworkItems = items;
+            }, function (err) {
+                console.error('Error: ' + err);
+            });
 
         $scope.create = function () {
-            $scope.newItem.$save(function () {
-                $scope.fireworkItems = Item.query();
-                $scope.newItem = new Item();
-            });
+            Azureservice.insert('items', $scope.newItem)
+                .then(function () {
+                    console.log('Insert successful');
+                }, function (err) {
+                    console.error('Error: ' + err);
+                })
         };
 
         $scope.delete = function (item) {
+
             item.$delete(function () {
                 $scope.fireworkItems = Item.query();
             });
+
         };
 
         $scope.update = function (item) {
             item.$update();
         };
 
-        $scope.Boolage = false;
-
-
-    });
+    })
+;

@@ -5,8 +5,7 @@ angular.module('fireworkNgApp', [
     'ngResource',
     'ngSanitize',
     'ngRoute',
-    'mobileServices'
-])
+    'azure-mobile-service.module'])
     .config(function ($routeProvider) {
         $routeProvider
             .when('/', {
@@ -20,6 +19,10 @@ angular.module('fireworkNgApp', [
             .when('/add', {
                 templateUrl: 'views/add.html',
                 controller: 'MainController'
+            })
+            .when('/login', {
+                templateUrl: 'views/login.html',
+                controller: 'LoginController'
             })
             .otherwise({
                 redirectTo: '/'
