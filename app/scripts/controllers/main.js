@@ -23,4 +23,7 @@ angular.module('fireworkNgApp')
             item.$update();
         };
 
+        $scope.Boolage = false;
+
+
     });
