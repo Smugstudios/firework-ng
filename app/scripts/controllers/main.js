@@ -24,10 +24,16 @@ angular.module('fireworkNgApp')
 
         $scope.delete = function (item) {
 
-            item.$delete(function () {
-                $scope.fireworkItems = Item.query();
-            });
+            //item.$delete(function () {
+            //    $scope.fireworkItems = Item.query();
+            //});
 
+            Azureservice.del('items', item)
+                .then(function () {
+                    console.log('Delete successful');
+                }, function (err) {
+                    console.error('Error: ' + err);
+                })
         };
 
         $scope.update = function (item) {

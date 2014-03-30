@@ -11,43 +11,43 @@ angular.module('azure-mobile-service.module', [])
         var client = new MobileServiceClient(API_URL, API_KEY);
 
 
-        var getCachedUser = function(){
-            if (sessionStorage.loggedInUser){
+        var getCachedUser = function () {
+            if (sessionStorage.loggedInUser) {
                 client.currentUser = JSON.parse(sessionStorage.loggedInUser);
             }
         };
 
         getCachedUser();
 
-        var getTable = function(tableName){
+        var getTable = function (tableName) {
             return client.getTable(tableName);
         };
 
-        var isUndefinedOrNotAnObjectOrFunction = function(obj){
+        var isUndefinedOrNotAnObjectOrFunction = function (obj) {
             return typeof obj === 'undefined' || (typeof obj !== 'object' && typeof obj !== 'function');
         };
 
-        var isUndefinedOrNotAnObject = function(obj){
+        var isUndefinedOrNotAnObject = function (obj) {
             return isNullOrUndefined(obj) || (typeof obj !== 'object');
         };
 
-        var isNullOrUndefined = function(value){
+        var isNullOrUndefined = function (value) {
             return value === null || typeof value === 'undefined';
         };
-        var isNotNullOrUndefined = function(value){
+        var isNotNullOrUndefined = function (value) {
             return !isNullOrUndefined(value);
         };
 
         //This will accept the Azure promise and turn it into a angular promise.
         //Elimiante the need for $scope.$apply in your controller.
-        var wrapAzurePromiseWithAngularPromise = function(azurePromise){
+        var wrapAzurePromiseWithAngularPromise = function (azurePromise) {
             var deferred = $q.defer();
 
             azurePromise
-                .done(function(items){
+                .done(function (items) {
                     deferred.resolve(items);
                 },
-                function(err){
+                function (err) {
                     deferred.reject(err);
                 });
             return deferred.promise;
@@ -71,45 +71,45 @@ angular.module('azure-mobile-service.module', [])
 
              @return promise               Returns a WindowsAzure promise
              */
-            query: function(tableName, obj){
+            query: function (tableName, obj) {
 
                 var data = null;
 
-                if (isNullOrUndefined(tableName)){
+                if (isNullOrUndefined(tableName)) {
                     console.error('Azureservice.query: You must specify a table name');
                     return null;
                 }
 
-                if (angular.isDefined(obj) && angular.isObject(obj)){
+                if (angular.isDefined(obj) && angular.isObject(obj)) {
 
-                    if (isUndefinedOrNotAnObjectOrFunction(obj.criteria)){
+                    if (isUndefinedOrNotAnObjectOrFunction(obj.criteria)) {
                         obj.criteria = {};
                     }
 
                     data = getTable(tableName).where(obj.criteria, obj.params);
 
                     //Number of results to return
-                    if (isNotNullOrUndefined(obj.take) && angular.isNumber(obj.take)){
+                    if (isNotNullOrUndefined(obj.take) && angular.isNumber(obj.take)) {
                         data = data.take(obj.take);
                     }
 
                     //number of results to skip
-                    if (isNotNullOrUndefined(obj.skip) && angular.isNumber(obj.take)){
+                    if (isNotNullOrUndefined(obj.skip) && angular.isNumber(obj.take)) {
                         data = data.skip(obj.skip);
                     }
 
                     //How to sort/order the data
-                    if (angular.isDefined(obj.orderBy) && angular.isArray(obj.orderBy)){
+                    if (angular.isDefined(obj.orderBy) && angular.isArray(obj.orderBy)) {
                         var orderBy = obj.orderBy;
 
-                        for (var i=0; i < orderBy.length; i++){
+                        for (var i = 0; i < orderBy.length; i++) {
                             var column = orderBy[i].column;
                             var dir = orderBy[i].direction;
 
-                            if (angular.isDefined(column)){
-                                if (angular.isDefined(dir) && dir.toLowerCase() === 'desc'){
+                            if (angular.isDefined(column)) {
+                                if (angular.isDefined(dir) && dir.toLowerCase() === 'desc') {
                                     data = data.orderByDescending(column);
-                                }else if (angular.isDefined(column)){
+                                } else if (angular.isDefined(column)) {
                                     data = data.orderBy(column);
                                 }
                             }
@@ -117,11 +117,11 @@ angular.module('azure-mobile-service.module', [])
                     }
 
                     //Return listed columns
-                    if (angular.isDefined(obj.columns) && angular.isArray(obj.columns)){
+                    if (angular.isDefined(obj.columns) && angular.isArray(obj.columns)) {
                         data = data.select(obj.columns.join());
                     }
 
-                }else {
+                } else {
                     //No criteria specified - get everything - Note azure limits the count of returned items see docs.
                     data = getTable(tableName).where({});
                 }
@@ -133,7 +133,7 @@ angular.module('azure-mobile-service.module', [])
              Alias to .query(tableName)
              Returns all results
              */
-            getAll: function(tableName){
+            getAll: function (tableName) {
                 return this.query(tableName);
             },
 
@@ -145,13 +145,13 @@ angular.module('azure-mobile-service.module', [])
              @return promise               Returns a WindowsAzure promise
              */
 
-            insert: function(tableName, obj){
-                if (isNullOrUndefined(tableName)){
+            insert: function (tableName, obj) {
+                if (isNullOrUndefined(tableName)) {
                     console.error('Azureservice.insert: You must specify a table name');
                     return null;
                 }
 
-                if (isUndefinedOrNotAnObject(obj)){
+                if (isUndefinedOrNotAnObject(obj)) {
                     console.error('Azureservice.insert: You must specify the insert object');
                     return null;
                 }
@@ -167,13 +167,13 @@ angular.module('azure-mobile-service.module', [])
              @return promise               Returns a WindowsAzure promise
              */
 
-            update: function(tableName, obj){
-                if (isNullOrUndefined(tableName)){
+            update: function (tableName, obj) {
+                if (isNullOrUndefined(tableName)) {
                     console.error('Azureservice.update: You must specify a table name');
                     return null;
                 }
 
-                if (isUndefinedOrNotAnObject(obj)){
+                if (isUndefinedOrNotAnObject(obj)) {
                     console.error('Azureservice.update: You must specify the insert object');
                     return null;
                 }
@@ -189,13 +189,13 @@ angular.module('azure-mobile-service.module', [])
              @return promise               Returns a WindowsAzure promise
              */
 
-            del: function(tableName, obj){
-                if (isNullOrUndefined(tableName)){
+            del: function (tableName, obj) {
+                if (isNullOrUndefined(tableName)) {
                     console.error('Azureservice.del: You must specify a table name');
                     return null;
                 }
 
-                if (isUndefinedOrNotAnObject(obj)){
+                if (isUndefinedOrNotAnObject(obj)) {
                     console.error('Azureservice.del: You must specify the insert object');
                     return null;
                 }
@@ -211,13 +211,13 @@ angular.module('azure-mobile-service.module', [])
              @return promise               Returns a WindowsAzure promise
              */
 
-            login: function(oauthProvider){
+            login: function (oauthProvider) {
 
-                if (!angular.isDefined(oauthProvider) || VAILD_OAUTH_PROVIDERS.indexOf(oauthProvider) === -1){
+                if (!angular.isDefined(oauthProvider) || VAILD_OAUTH_PROVIDERS.indexOf(oauthProvider) === -1) {
                     throw new Error('Azureservice.login Invalid or no oauth provider listed.');
                 }
 
-                var promise = client.login(oauthProvider).then(function(){
+                var promise = client.login(oauthProvider).then(function () {
                     //cache login
                     sessionStorage.loggedInUser = JSON.stringify(client.currentUser);
                 });
@@ -228,14 +228,14 @@ angular.module('azure-mobile-service.module', [])
              Logs a user out
              */
 
-            logout: function(){
+            logout: function () {
                 //clear cache
                 sessionStorage.loggedInUser = null;
                 client.logout();
             },
 
-            isLoggedIn: function(){
-                return isNotNullOrUndefined(client.currentUser)  && isNotNullOrUndefined(sessionStorage.loggedInUser);
+            isLoggedIn: function () {
+                return isNotNullOrUndefined(client.currentUser) && isNotNullOrUndefined(sessionStorage.loggedInUser);
             },
 
             /*
@@ -248,24 +248,24 @@ angular.module('azure-mobile-service.module', [])
 
              */
 
-            invokeApi: function(name, options){
+            invokeApi: function (name, options) {
 
                 var deferred = $q.defer();
 
                 var validMethods = ['get', 'post', 'put', 'delete'];
 
-                if (isNullOrUndefined(name)){
+                if (isNullOrUndefined(name)) {
                     console.error('Azureservice.invokeApi No custom api name specified');
                     return null;
                 }
 
-                if (isUndefinedOrNotAnObject(options)){
+                if (isUndefinedOrNotAnObject(options)) {
                     options = {
                         method: 'get'
                     }
-                }else if (isNullOrUndefined(options.method)){
+                } else if (isNullOrUndefined(options.method)) {
                     options.method = 'get'
-                }else if (validMethods.indexOf(options.method.toLowerCase()) === -1 ){
+                } else if (validMethods.indexOf(options.method.toLowerCase()) === -1) {
                     console.error('Azureservice.invokeApi Invalid method type');
                     return null;
                 }
@@ -273,10 +273,10 @@ angular.module('azure-mobile-service.module', [])
 
                 client
                     .invokeApi(name, options)
-                    .done(function(results){
+                    .done(function (results) {
                         deferred.resolve(results.result);
                     },
-                    function(err){
+                    function (err) {
                         deferred.reject(err);
                     });
 
