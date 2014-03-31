@@ -16,7 +16,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,app}) styles/main.css -->
@@ -33,7 +33,7 @@
     <div class="header">
         <ul class="nav nav-pills pull-right">
             <li class="active"><a ng-href="#">Home</a></li>
-            <li><a ng-href="#">Login</a></li>
+            <li><a ng-href="/#/login">Login</a></li>
         </ul>
         <h3 class="text-muted">Firework</h3>
     </div>
@@ -97,8 +97,9 @@
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <script src="scripts/app.js"></script>
-<script src="scripts/mobile-service.js"></script>
+<script src="scripts/angular-azure-mobile-service.js"></script>
 <script src="scripts/controllers/main.js"></script>
+<script src="scripts/controllers/login.js"></script>
 <!-- endbuild -->
 </body>
 </html>

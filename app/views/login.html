@@ -1,0 +1,16 @@
+<p>
+    <button ng-click="logout()">Sign Out</button>
+</p>
+<p>
+    <button ng-click="authenticate('google')">Google</button>
+</p>
+<p>
+    <button ng-click="authenticate('twitter')">Twitter</button>
+</p>
+<p>
+    Logged in: <input type="checkbox" ng-model="isLoggedIn">
+
+    User: {{ JSON.stringify( isLoggedIn ) }}
+
+</p>
+
