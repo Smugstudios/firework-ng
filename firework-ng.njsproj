@@ -16,6 +16,8 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
+    <Content Include="app\views\add.html" />
+    <Content Include="app\views\timeline.html" />
     <Content Include="bower.json" />
     <Content Include="package.json" />
     <Content Include="design.md" />
