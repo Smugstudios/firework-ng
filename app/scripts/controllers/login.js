@@ -11,5 +11,12 @@ angular.module('fireworkNgApp')
                 }, function (err) {
                     console.error('Azure Error: ' + err);
                 })
+        };
+
+        $scope.logout = function () {
+            Azureservice.logout();
         }
+
+        $scope.isLoggedIn = Azureservice.isLoggedIn();
+        
     });

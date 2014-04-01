@@ -5,13 +5,7 @@ angular.module('fireworkNgApp')
 
         $scope.newItem = {};
         $scope.fireworkItems = [];
-
-        Azureservice.query('items', {})
-            .then(function (items) {
-                $scope.fireworkItems = items;
-            }, function (err) {
-                console.error('Error: ' + err);
-            });
+        refreshItems();
 
         $scope.create = function () {
             Azureservice.insert('items', $scope.newItem)
@@ -26,19 +20,18 @@ angular.module('fireworkNgApp')
             Azureservice.del('items', item)
                 .then(function () {
                     console.log('Delete successful');
-                    Azureservice.query('items', {})
-                        .then(function (items) {
-                            $scope.fireworkItems = items;
-                        }, function (err) {
-                            console.error('Error: ' + err);
-                        });
+                    refreshItems();
                 }, function (err) {
                     console.error('Error: ' + err);
                 })
         };
 
-        $scope.update = function (item) {
-            item.$update();
+        function refreshItems() {
+            Azureservice.query('items', {})
+                .then(function (items) {
+                    $scope.fireworkItems = items;
+                }, function (err) {
+                    console.error('Error: ' + err);
+                });
         };
-    })
-;
+    });
