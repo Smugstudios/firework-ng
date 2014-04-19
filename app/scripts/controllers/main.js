@@ -5,14 +5,22 @@ angular.module('fireworkNgApp')
 
         $scope.newItem = {};
         $scope.fireworkItems = [];
+        $scope.loading = true;
+        $scope.showStatus = false;
+
         refreshItems();
 
         $scope.create = function () {
             Azureservice.insert('items', $scope.newItem)
                 .then(function () {
                     console.log('Insert successful');
+                    refreshItems();
+                    $scope.statusMessage = "Item added successfully";
+                    $scope.showStatus = true;
                 }, function (err) {
                     console.error('Error: ' + err);
+                    $scope.statusMessage = "Item failed to add";
+                    $scope.showStatus = true;
                 })
         };
 
@@ -27,11 +35,14 @@ angular.module('fireworkNgApp')
         };
 
         function refreshItems() {
+            $scope.loading = true;
             Azureservice.query('items', {})
                 .then(function (items) {
                     $scope.fireworkItems = items;
+                    $scope.loading = false;
                 }, function (err) {
                     console.error('Error: ' + err);
+                    $scope.loading = false;
                 });
         };
 

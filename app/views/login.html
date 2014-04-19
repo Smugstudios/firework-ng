@@ -1,13 +1,10 @@
+<h2>Login</h2>
+<p ng-hide="isLoggedIn">
+    Login with:
+    <button ng-click="authenticate('google')" class="btn btn-warning">Google</button>
+    <button ng-click="authenticate('twitter')" class="btn btn-warning">Twitter</button>
+</p>
 <p ng-show="isLoggedIn">
-    <button ng-click="logout()">Sign Out</button>
+    <p>You are logged in.</p>
+    <button ng-click="logout()" class="btn btn-warning">Sign Out</button>
 </p>
-<p>
-    <button ng-click="authenticate('google')">Google</button>
-</p>
-<p>
-    <button ng-click="authenticate('twitter')">Twitter</button>
-</p>
-<p>
-    Logged in: <input type="checkbox" ng-model="isLoggedIn">
-</p>
-

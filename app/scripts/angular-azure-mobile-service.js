@@ -3,13 +3,12 @@
 angular.module('azure-mobile-service.module', [])
     .service('Azureservice', function Azureservice($q) {
 
-        var API_URL = 'https://nevillnet.azure-mobile.net/';
-        var API_KEY = 'NKlaZACMlXLkdoXugaPGoliFvnrpoW34';
+        var API_URL = 'https://firework.azure-mobile.net/';
+        var API_KEY = '';
         var VAILD_OAUTH_PROVIDERS = ['google', 'twitter', 'facebook', 'windowsaccount', 'windowsazureactivedirectory'];
 
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
         var client = new MobileServiceClient(API_URL, API_KEY);
-
 
         var getCachedUser = function () {
             if (sessionStorage.loggedInUser) {
