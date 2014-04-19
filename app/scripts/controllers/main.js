@@ -7,6 +7,7 @@ angular.module('fireworkNgApp')
         $scope.fireworkItems = [];
         $scope.loading = true;
         $scope.showStatus = false;
+        $scope.statusMessage = '';
 
         refreshItems();
 
@@ -29,6 +30,8 @@ angular.module('fireworkNgApp')
                 .then(function () {
                     console.log('Delete successful');
                     refreshItems();
+                    $scope.statusMessage = "Item deleted successfully";
+                    $scope.showStatus = true;               
                 }, function (err) {
                     console.error('Error: ' + err);
                 })

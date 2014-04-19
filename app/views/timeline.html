@@ -4,6 +4,8 @@
 
         <p ng-show="loading"><i class="fa fa-spinner fa-spin"></i>
         </p>
+      
+        <div ng-show="showStatus" class="alert alert-info">{{ statusMessage }}</div>
 
         <p ng-repeat="item in fireworkItems">
             <button class="btn btn-sm btn-primary"> @{{ item.actor }}</button>
