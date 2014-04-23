@@ -2,10 +2,11 @@
     <div class="col-sm-12">
         <h1>Timeline</h1>
 
-        <p ng-show="loading"><i class="fa fa-spinner fa-spin"></i>
+        <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+
+        <p ng-show="loading">
+            <i class="fa fa-spinner fa-spin"></i>
         </p>
-      
-        <div ng-show="showStatus" class="alert alert-info">{{ statusMessage }}</div>
 
         <p ng-repeat="item in fireworkItems">
             <button class="btn btn-sm btn-primary"> @{{ item.actor }}</button>
@@ -13,9 +14,10 @@
             <button class="btn btn-sm btn-info"> {{ item.amount }}</button>
             <button class="btn btn-sm btn-warning"> {{ item.units }}</button>
             <button class="btn btn-sm btn-danger">{{ item.date }}</button>
-            <button class="btn btn-xs btn-default">edit</button>
-            <button class="btn btn-xs btn-danger" ng-click="delete(item)">del</button>
+            <button class="btn btn-xs btn-default" ng-click="edit(item)">edit</button>
+            <button class=" btn btn-xs btn-danger" ng-click="delete(item)">del</button>
         </p>
+
     </div>
 </div>
 

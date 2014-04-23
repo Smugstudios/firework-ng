@@ -2,7 +2,8 @@
     <div class="col-sm-6">
         <h2>Add</h2>
 
-        <div ng-show="showStatus" class="alert alert-info">{{ statusMessage }}</div>
+                <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+
 
         <form ng-submit="create()" role="form">
             <div class="form-group">

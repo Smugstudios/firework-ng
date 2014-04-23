@@ -1,13 +1,12 @@
 'use strict';
 
 angular.module('fireworkNgApp')
-    .controller('MainController', function ($scope, Azureservice) {
+    .controller('MainController', function ($scope, Azureservice, $location) {
 
         $scope.newItem = {};
         $scope.fireworkItems = [];
         $scope.loading = true;
-        $scope.showStatus = false;
-        $scope.statusMessage = '';
+        $scope.editItem = null;
 
         refreshItems();
 
@@ -16,13 +15,16 @@ angular.module('fireworkNgApp')
                 .then(function () {
                     console.log('Insert successful');
                     refreshItems();
-                    $scope.statusMessage = "Item added successfully";
-                    $scope.showStatus = true;
+                    $scope.alerts.push({type: 'success', msg: "Item added successfully"});
                 }, function (err) {
                     console.error('Error: ' + err);
-                    $scope.statusMessage = "Item failed to add";
-                    $scope.showStatus = true;
+                    $scope.alerts.push({type: 'danger', msg: "Item failed to add"});
                 })
+        };
+
+        $scope.edit = function (item) {
+            $scope.editItem = item;
+            $location.path('/edit/' + item.id);
         };
 
         $scope.delete = function (item) {
@@ -30,8 +32,7 @@ angular.module('fireworkNgApp')
                 .then(function () {
                     console.log('Delete successful');
                     refreshItems();
-                    $scope.statusMessage = "Item deleted successfully";
-                    $scope.showStatus = true;               
+                    $scope.alerts.push({type: 'success', msg: "Item deleted successfully"});
                 }, function (err) {
                     console.error('Error: ' + err);
                 })
@@ -50,5 +51,15 @@ angular.module('fireworkNgApp')
         };
 
         $scope.isLoggedIn = Azureservice.isLoggedIn();
+
+        $scope.alerts = [];
+
+        $scope.addAlert = function () {
+            $scope.alerts.push({msg: "Another alert!"});
+        };
+
+        $scope.closeAlert = function (index) {
+            $scope.alerts.splice(index, 1);
+        };
 
     });

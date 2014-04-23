@@ -5,8 +5,10 @@ angular.module('fireworkNgApp', [
     'ngResource',
     'ngSanitize',
     'ngRoute',
-    'azure-mobile-service.module'])
+    'azure-mobile-service.module',
+    'ui.bootstrap'])
     .config(function ($routeProvider) {
+
         $routeProvider
             .when('/', {
                 templateUrl: 'views/home.html',
@@ -18,6 +20,10 @@ angular.module('fireworkNgApp', [
             })
             .when('/add', {
                 templateUrl: 'views/add.html',
+                controller: 'MainController'
+            })
+            .when('/edit/:itemId', {
+                templateUrl: 'views/edit.html',
                 controller: 'MainController'
             })
             .when('/login', {
