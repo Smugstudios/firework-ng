@@ -7,6 +7,7 @@ angular.module('fireworkNgApp')
         $scope.fireworkItems = [];
         $scope.loading = true;
         $scope.editItem = null;
+        $scope.orderProp = 'date';
 
         refreshItems();
 

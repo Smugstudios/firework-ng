@@ -1,5 +1,6 @@
 <div class="row">
     <div class="col-sm-12">
+
         <h1>Timeline</h1>
 
         <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
@@ -8,7 +9,19 @@
             <i class="fa fa-spinner fa-spin"></i>
         </p>
 
-        <p ng-repeat="item in fireworkItems">
+        <p>Filter: <input ng-model="query"></p>
+
+        <p>
+            Sort by:
+            <select ng-model="orderProp">
+                <option value="-date">Newest</option>
+                <option value="+date">Oldest</option>
+                <option value="+actor">Who</option>
+                <option value="+action">What</option>
+            </select>
+        </p>
+
+        <p ng-repeat="item in fireworkItems | filter:query | orderBy:orderProp">
             <button class="btn btn-sm btn-primary"> @{{ item.actor }}</button>
             <button class="btn btn-sm btn-success"> {{ item.action }}</button>
             <button class="btn btn-sm btn-info"> {{ item.amount }}</button>
