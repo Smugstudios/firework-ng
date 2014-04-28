@@ -180,6 +180,22 @@ angular.module('azure-mobile-service.module', [])
                 return wrapAzurePromiseWithAngularPromise(getTable(tableName).update(obj));
             },
 
+
+
+            getSingleItem: function (tableName, id) {
+                if (isNullOrUndefined(tableName)) {
+                    console.error('Azureservice.update: You must specify a table name');
+                    return null;
+                }
+
+                if (isNullOrUndefined(id)) {
+                    console.error('Azureservice.update: You must specify the id');
+                    return null;
+                }
+
+                return wrapAzurePromiseWithAngularPromise(getTable(tableName).lookup(id));
+            },
+
             /*
              Delete row(s) from Azure
 

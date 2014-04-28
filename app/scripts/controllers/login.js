@@ -15,6 +15,7 @@ angular.module('fireworkNgApp')
 
         $scope.logout = function () {
             Azureservice.logout();
+            $scope.isLoggedIn = false;
             console.log('Logging Out');
         };
 

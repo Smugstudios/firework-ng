@@ -8,6 +8,7 @@ angular.module('fireworkNgApp')
         $scope.loading = true;
         $scope.editItem = null;
         $scope.orderProp = 'date';
+        $scope.query = null;
 
         refreshItems();
 
@@ -26,6 +27,18 @@ angular.module('fireworkNgApp')
         $scope.edit = function (item) {
             $scope.editItem = item;
             $location.path('/edit/' + item.id);
+        };
+
+        $scope.filterByActor = function (actor) {
+            $scope.query = actor;
+        };
+
+        $scope.filterByAction = function (action) {
+            $scope.query = action;
+        };
+
+        $scope.clearFilter = function () {
+            $scope.query = null;
         };
 
         $scope.delete = function (item) {

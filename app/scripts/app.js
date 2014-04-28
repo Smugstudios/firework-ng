@@ -24,7 +24,7 @@ angular.module('fireworkNgApp', [
             })
             .when('/edit/:itemId', {
                 templateUrl: 'views/edit.html',
-                controller: 'MainController'
+                controller: 'EditController'
             })
             .when('/login', {
                 templateUrl: 'views/login.html',
@@ -35,7 +35,7 @@ angular.module('fireworkNgApp', [
             });
     },
     function ($httpProvider) { // coniguring the httpProvider
-        $httpProvider.defaults.headers.common['X-ZUMO-APPLICATION'] = 'NKlaZACMlXLkdoXugaPGoliFvnrpoW34'; // add the application key
+        $httpProvider.defaults.headers.common['X-ZUMO-APPLICATION'] = 'na'; // add the application key
         $httpProvider.defaults.headers.common['Content-Type'] = 'Application/json';
     }
 );
