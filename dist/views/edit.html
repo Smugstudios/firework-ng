@@ -1,0 +1,6 @@
+<div class="row"><div class="col-sm-6"><h2>Edit</h2><alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert><form ng-submit="update()" role="form"><div class="form-group"><input ng-model="editItem.actor" type="text" class="form-control" id="actor" placeholder="Who"></div><div class="form-group"><input ng-model="editItem.action" type="text" class="form-control width:100px" id="action" placeholder="What"></div><div class="form-group"><input ng-model="editItem.amount" type="text" class="form-control" id="amount" placeholder="Num"></div><div class="form-group"><input ng-model="editItem.units" type="text" class="form-control" id="units" placeholder="Units"></div><div class="form-group"><input ng-model="editItem.date" type="text" class="form-control" id="date" placeholder="Date"></div><!--
+            <div class="form-group">
+                <input ng-model="editItem.message" type="text" class="form-control" id="message"
+                       placeholder="Message">
+            </div>
+            --><button type="submit" class="btn btn-default">Update</button></form></div><div class="col-sm-6"></div></div>
