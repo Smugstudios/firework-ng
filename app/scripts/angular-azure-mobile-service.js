@@ -181,7 +181,13 @@ angular.module('azure-mobile-service.module', [])
             },
 
 
+            /*
+             Get single item in Azure
 
+             @param string tableName       REQUIRED The name of the table to query
+             @param string id            REQUIRED String id of the item to get
+             @return promise               Returns a WindowsAzure promise
+             */
             getSingleItem: function (tableName, id) {
                 if (isNullOrUndefined(tableName)) {
                     console.error('Azureservice.update: You must specify a table name');

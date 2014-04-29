@@ -8,22 +8,27 @@
         <p ng-show="loading">
             <i class="fa fa-spinner fa-spin"></i>
         </p>
+    </div>
+</div>
 
-        <p>
-            Filter: <input ng-model="query">
-            <button class="btn btn-xs btn-danger" ng-click="clearFilter()">x</button>
-        </p>
+<div class="row form-group">
+    <div class="col-sm-6">
+        Filter: <input ng-model="query" class="form-control">
+    </div>
+    <div class="col-sm-6">
+        Sort by:
+        <select ng-model="orderProp" class="form-control">
+            <option value="-date">Newest</option>
+            <option value="+date">Oldest</option>
+            <option value="+actor">Who</option>
+            <option value="+action">What</option>
+        </select>
 
-        <p>
-            Sort by:
-            <select ng-model="orderProp">
-                <option value="-date">Newest</option>
-                <option value="+date">Oldest</option>
-                <option value="+actor">Who</option>
-                <option value="+action">What</option>
-            </select>
-        </p>
+    </div>
+</div>
 
+<div class="row">
+    <div class="col-sm-12">
         <p ng-repeat="item in fireworkItems | filter:query | orderBy:orderProp">
             <button class="btn btn-sm btn-primary" ng-click="filterByActor(item.actor)"> @{{ item.actor }}</button>
             <button class="btn btn-sm btn-success" ng-click="filterByAction(item.action)"> {{ item.action }}</button>
@@ -33,7 +38,16 @@
             <button class="btn btn-xs btn-default" ng-click="edit(item)">edit</button>
             <button class=" btn btn-xs btn-danger" ng-click="delete(item)">del</button>
         </p>
+    </div>
+</div>
 
+
+<div class="row">
+    <div class="col-sm-12">
+        <p>
+            Filtered count: {{ fireworkItems.length }},
+            Total count: {{(fireworkItems|filter:query).length}}
+        </p>
     </div>
 </div>
 
