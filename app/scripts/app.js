@@ -30,6 +30,10 @@ angular.module('fireworkNgApp', [
                 templateUrl: 'views/login.html',
                 controller: 'LoginController'
             })
+            .when('/about', {
+                templateUrl: 'views/about.html',
+                controller: 'MainController'
+            })
             .otherwise({
                 redirectTo: '/'
             });
